@@ -4,4 +4,10 @@
 
 {% block body %}
 <div>Hello world</div>
+<div>Username: {{user.username}}</div>
+<div>First Name: {{user.first_name}} </div>
+<div>Last Name: {{user.last_name}} </div>
+<div>Logout: <a href={% url "logout" %} >Here</a> </div>
+<div>Register: <a href={% url "register" %}>Here</a></div>
+<div>Login: <a href={% url "login" %}>Here</a></div>
 {% endblock body %}
