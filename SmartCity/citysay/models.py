@@ -9,8 +9,8 @@ class Institution(models.Model):
         ("POLICE" , "Politia Deva"),
         ("LUCI" , "Primaria Municipiului Deva"),
         ("ISJ" , "Inspectoratul Scolar Judetean Hunedoara"),
-        ("CJH", "Consiliul Judetean Hunedoara")
-        ("NONE", "None")
+        ("CJH", "Consiliul Judetean Hunedoara"),
+        ("NONE", "None"),
     ]
     
     
