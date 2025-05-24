@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-class Institution(models.Model):
+class User(AbstractUser):
     
     INSTITUTIN_NAMES = [
         ("PEDA" , 'Colegiul National Pedagogic "Regina Maria" Deva'),
@@ -13,14 +13,10 @@ class Institution(models.Model):
         ("NONE", "None"),
     ]
     
-    
-    name = models.CharField(max_length=200, choices=INSTITUTIN_NAMES)
-
-class User(AbstractUser):
     cnp = models.CharField(max_length=13)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    institution = models.CharField(max_length=200, choices=INSTITUTIN_NAMES)
     
 class Poll(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
