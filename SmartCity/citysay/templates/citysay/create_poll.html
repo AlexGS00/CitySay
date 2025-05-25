@@ -1,7 +1,46 @@
 {% extends "citysay/layout.html" %}
+{% load static %}
 
 {% block title %}Create Poll{% endblock title %}
 
 {% block body %}
+<script src={% static "script/create_poll.js" %}></script>
+<h2> Create a poll</h2>
+<form action="/create_poll" method="post">
+    {% csrf_token %}
+    <input name="num_options" id="num-options" type="hidden" value="2">
+    <div class="mb-3">
+        <label for="poll-title" class="form-label">Titlu Sondaj</label>
+        <input type="text" class="form-control" id="poll-title" placeholder="Titlu sondaj" name="title" autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <label for="poll-institution" class="form-label">Institutia dumneavoastra:</label>
+        <input class="form-control" id="poll-institution" type="text" value='Colegiul National Pedagogic "Regina Maria" Deva' disabled readonly>
+    </div>
+    <div class="mb-3">
+        <label for="poll-description" class="form-label">Descriere Sondaj:</label>
+        <textarea class="form-control" name="description" id="poll-description"></textarea>
+    </div>
 
+    <div class="option-section">
+        <h3>Optiuni:</h3>
+        <div id="options">
+            <div class="option">
+                <label for="option-1" class="form-label">Optiunea 1:</label>
+                <input name="option-1" id="option-1" type="text" autocomplete="off" placeholder="Optiunea 1">
+            </div>
+            <div class="option">
+                <label for="option-2" class="form-label">Optiunea 2:</label>
+                <input name="option-2" id="option-1" type="text" autocomplete="off" placeholder="Optiunea 2">
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row">
+                <button type="button" id="add-btn">Adauga Optiune</button>
+                <button type="button" id="rm-btn">Sterge Optiune</button>
+            </div>
+            <button >Adauga Sondaj</button>
+        </div>
+    </div>
+</form>
 {% endblock body %}
