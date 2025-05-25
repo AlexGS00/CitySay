@@ -21,7 +21,7 @@ def index(request):
     return render(request, "citysay/index.html")
 
 def polls(request):
-    pass
+    return render(request, "citysay/polls.html")
 
 def create_poll(request):
     pass
