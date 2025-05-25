@@ -5,9 +5,16 @@ from django.http import HttpResponseRedirect
 from django.db import IntegrityError
 from django.urls import reverse
 
-from .models import User
+from .models import User, Institution, Poll, Option, Sesization
 
-codes = ["PEDA", "POLICE", "LUCI", "ISJ", "CJH", "NONE"]
+codes = {
+    "PEDA": 'Colegiul National Pedagogic "Regina Maria" Deva',
+    "POLICE": "Politia Municipiului Deva",
+    "LUCI": "Primaria Municipiului Deva",
+    "ISJ": "Inspectoratul Scolar Judetean Hunedoara",
+    "CJH": "Consiliul Judetean Hunedoara",
+    "NONE": "None"
+}
 
 # Create your views here.
 def index(request):
@@ -34,7 +41,7 @@ def login_view(request):
         
         # Check if authentication was successful
         if user is not None:
-            login(request, user)
+            login(request, user,backend="citysay.auth_backends.CNPBackend")
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "citysay/login.html", {
@@ -54,32 +61,36 @@ def register(request):
         cnp = request.POST["cnp"]
         email = request.POST["email"]
         code = request.POST["code"]
+
+        # Default to NONE if invalid
         if code not in codes:
             code = "NONE"
+
         username = f'{first_name}-{last_name}'
-        
-        # Ensure password matches confirmation
+
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(request, "citysay/register.html", {
                 "message": "Passwords must match."
             })
-            
-            # Attempt to create user
+
+        try:
+            institution = Institution.objects.get(code=code)
+        except Institution.DoesNotExist:
+            institution = None
+
         try:
             user = User.objects.create_user(username, email, password)
             user.first_name = first_name
             user.last_name = last_name
             user.cnp = cnp
-            if code:
-                user.institution = code
-            else:
-                user.institution = "NONE"
+            user.institution = institution
             user.save()
         except IntegrityError:
             return render(request, "citysay/register.html", {
                 "message": "Username already taken."
             })
-        login(request, user)
+
+        login(request, user, backend="citysay.auth_backends.CNPBackend")
         return HttpResponseRedirect(reverse("index"))
