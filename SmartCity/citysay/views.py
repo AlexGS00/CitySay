@@ -1,14 +1,26 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.db import IntegrityError
 from django.urls import reverse
 
 from .models import User
 
+codes = ["PEDA", "POLICE", "LUCI", "ISJ", "CJH", "NONE"]
+
 # Create your views here.
 def index(request):
     return render(request, "citysay/index.html")
+
+def polls(request):
+    pass
+
+def create_poll(request):
+    pass
+
+def sesizations(request):
+    pass
 
 def login_view(request):
     if request.method == "GET":
@@ -41,8 +53,9 @@ def register(request):
         last_name = request.POST["last-name"]
         cnp = request.POST["cnp"]
         email = request.POST["email"]
-        #code = request.POST["code"]
-        code = None
+        code = request.POST["code"]
+        if code not in codes:
+            code = "NONE"
         username = f'{first_name}-{last_name}'
         
         # Ensure password matches confirmation
