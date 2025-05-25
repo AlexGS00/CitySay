@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.db import IntegrityError
 from django.urls import reverse
 
@@ -24,7 +24,10 @@ def polls(request):
     return render(request, "citysay/polls.html")
 
 def create_poll(request):
-    pass
+    if request.method == "GET":
+        return render(request, "citysay/create_poll.html")
+    else:
+        return HttpResponse("Not Iplemented")
 
 def sesizations(request):
     pass
