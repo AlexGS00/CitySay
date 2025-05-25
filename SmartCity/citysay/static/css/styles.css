@@ -8,6 +8,14 @@ a:hover{
     text-decoration: none;
 }
 
+textarea{
+    display: block;
+}
+
+label{
+    display: block;
+}
+
 .nav-link{
     color: rgb(10, 10, 160);
 }
