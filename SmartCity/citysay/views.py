@@ -88,7 +88,10 @@ def vote(request, poll_id, option_id):
 
 def create_poll(request):
     if request.method == "GET":
-        return render(request, "citysay/create_poll.html")
+        institution = request.user.institution
+        return render(request, "citysay/create_poll.html", {
+            "institution": institution
+        })
     else:
         return HttpResponse("Not Iplemented")
 
