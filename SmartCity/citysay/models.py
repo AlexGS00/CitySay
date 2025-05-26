@@ -39,3 +39,8 @@ class Sesization(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=2000)
+    institution = models.ForeignKey(Institution, null=True, blank=True, on_delete=models.SET_NULL)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title
