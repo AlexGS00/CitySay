@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.db import IntegrityError
 from django.urls import reverse
+from django.shortcuts import redirect
 
 from .models import User, Institution, Poll, Option, Sesization
 
@@ -21,7 +22,36 @@ def index(request):
     return render(request, "citysay/index.html")
 
 def polls(request):
-    return render(request, "citysay/polls.html")
+    all_polls = Poll.objects.all()
+    return render(request, "citysay/polls.html",{
+        "polls": all_polls
+    })
+
+def poll(request, poll_id):
+    try:
+        selected_poll = Poll.objects.get(id=poll_id)
+    except Poll.DoesNotExist:
+        return HttpResponse("Poll not found", status=404)
+    options = Option.objects.filter(poll=selected_poll).order_by("number")
+    total_votes = 0
+    if not selected_poll:
+        return redirect("polls")
+    
+    # check if user voted (is in the one of the option's votes list)
+    user_voted = False
+    if request.user.is_authenticated:
+        for option in options:
+            total_votes += option.votes.count()
+            option.vote_count = option.votes.count()
+            if request.user in option.votes.all():
+                user_voted = True
+                break
+    return render(request, "citysay/poll.html",{
+        "poll": selected_poll,
+        "options": options,
+        "user_voted": user_voted,
+        "total_votes": total_votes, 
+    })
 
 def create_poll(request):
     if request.method == "GET":
