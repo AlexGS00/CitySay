@@ -19,7 +19,7 @@
             {% for option in options %}
             
             <div class="option-number">Optiunea {{ option.number }}:</div>
-            <a href="#">
+            <a href="{% url 'vote' poll.id option.id %}">
                 <div class="option-card d-flex flex-row">
                     <div class="option-title">{{ option.title }}</div>
                 </div>
