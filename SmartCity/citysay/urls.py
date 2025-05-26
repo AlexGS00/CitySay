@@ -8,6 +8,8 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("polls", views.polls, name="polls"),
+    path("poll/<int:poll_id>", views.poll, name="poll"),
     path("create_poll", views.create_poll, name="create_poll"),
     path("sesizations", views.sesizations, name="sesizations"),
+    
 ]
