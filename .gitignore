@@ -7,3 +7,4 @@ __pycache__/
 *.pot
 *.pyc
 SmartCity/db.sqlite3
+SmartCity/citysay/__pycache__/views.cpython-312.pyc
