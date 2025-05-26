@@ -17,6 +17,14 @@ codes = {
     "NONE": "None"
 }
 
+institution_abreviations = {
+    "PEDA": 'Colegiul National Pedagogic "Regina Maria" Deva',
+    "POLICE": "Politia Municipiului Deva",
+    "PRIM": "Primaria Municipiului Deva",
+    "ISJ": "Inspectoratul Scolar Judetean Hunedoara",
+    "CJH": "Consiliul Judetean Hunedoara"
+}
+
 # Create your views here.
 def index(request):
     return render(request, "citysay/index.html")
@@ -43,9 +51,10 @@ def poll(request, poll_id):
         for option in options:
             total_votes += option.votes.count()
             option.vote_count = option.votes.count()
+            print(f"Option {option.number} has {option.vote_count} votes")
             if request.user in option.votes.all():
                 user_voted = True
-                break
+                
     return render(request, "citysay/poll.html",{
         "poll": selected_poll,
         "options": options,
@@ -53,14 +62,57 @@ def poll(request, poll_id):
         "total_votes": total_votes, 
     })
 
+def vote(request, poll_id, option_id):
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to vote", status=403)
+
+    try:
+        selected_poll = Poll.objects.get(id=poll_id)
+    except Poll.DoesNotExist:
+        return HttpResponse("Poll not found", status=404)
+
+    try:
+        selected_option = Option.objects.get(id=option_id, poll=selected_poll)
+    except Option.DoesNotExist:
+        return HttpResponse("Option not found", status=404)
+
+    # Check if user already voted
+    if request.user in selected_option.votes.all():
+        return HttpResponse("You have already voted for this option", status=403)
+
+    # Add user to the option's votes
+    selected_option.votes.add(request.user)
+    selected_option.save()
+
+    return HttpResponseRedirect(reverse("poll", args=(poll_id,)))
+
 def create_poll(request):
     if request.method == "GET":
         return render(request, "citysay/create_poll.html")
     else:
         return HttpResponse("Not Iplemented")
 
-def sesizations(request):
-    pass
+def create_sesization(request):
+    if request.method == "GET":
+        return render(request, "citysay/create_sesization.html", {
+            "institutions": institution_abreviations
+        })
+    else:
+        if not request.user.is_authenticated:
+            return HttpResponse("You must be logged in to create a sesization", status=403)
+        title = request.POST["title"]
+        description = request.POST["description"]
+        institution_abbr = request.POST["institution"]
+        
+        institution_name = institution_abreviations[institution_abbr]
+        institution = Institution.objects.get(name=institution_name)
+        
+        if not institution:
+            return HttpResponse("Institution not found", status=404)
+        sesization = Sesization(title=title, description=description, institution=institution, creator=request.user)
+        sesization.save()
+        
+        return HttpResponseRedirect(reverse("index"))
 
 def login_view(request):
     if request.method == "GET":
