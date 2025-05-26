@@ -11,41 +11,58 @@
     <div class="poll-descrition"> 
         {{ poll.description }}
     </div>
-    {% if not user_voted %}
-    
-    <div class="poll-options-container">
-
-        {% for option in options %}
+    {% if user.is_authenticated %}
+        {% if not user_voted %}
         
-        <div class="option-number">Optiunea {{ option.number }}:</div>
-        <a href="#">
-            <div class="option-card d-flex flex-row">
-                <div class="option-title">{{ option.title }}</div>
-            </div>
-        </a>
-        
-        {% endfor %}
-
-    </div>
-
-    {% else %}
-
         <div class="poll-options-container">
-
-            <div class="poll-voted">You have already voted!</div>
-            <div class="poll-voted-text">Here are the results:</div>
 
             {% for option in options %}
             
             <div class="option-number">Optiunea {{ option.number }}:</div>
-            <div class="option-card d-flex flex-row">
-                <div class="option-title">{{ option.title }}</div>
-            </div>
-            <div class="num_votes">Voturi: {{ option.vote_count }}</div>
-            {% endfor %}
+            <a href="#">
+                <div class="option-card d-flex flex-row">
+                    <div class="option-title">{{ option.title }}</div>
+                </div>
+            </a>
             
-            <div class="total-num-votes">Numar total de voturi: {{ total_votes }}</div>
+            {% endfor %}
+
         </div>
+
+        {% else %}
+
+            <div class="poll-options-container">
+
+                <div class="poll-voted">You have already voted!</div>
+                <div class="poll-voted-text">Here are the results:</div>
+
+                {% for option in options %}
+                
+                <div class="option-number">Optiunea {{ option.number }}:</div>
+                <div class="option-card d-flex flex-row">
+                    <div class="option-title">{{ option.title }}</div>
+                </div>
+                <div class="num_votes">Voturi: {{ option.vote_count }}</div>
+                {% endfor %}
+                
+                <div class="total-num-votes">Numar total de voturi: {{ total_votes }}</div>
+            </div>
+
+        {% endif %}
+            
+    {% else %}
+
+            <div class="poll-options-container">
+
+                {% for option in options %}
+                
+                <div class="option-number">Optiunea {{ option.number }}:</div>
+                <div class="option-card d-flex flex-row">
+                    <div class="option-title">{{ option.title }}</div>
+                </div>
+                {% endfor %}
+                
+            </div>
 
     {% endif %}
 </div>
