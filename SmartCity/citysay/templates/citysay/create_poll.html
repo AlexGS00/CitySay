@@ -5,7 +5,7 @@
 
 {% block body %}
 <script src={% static "script/create_poll.js" %}></script>
-<h2> Create a poll</h2>
+<div class="section-title"> Create a poll</div>
 <form action="/create_poll" method="post">
     {% csrf_token %}
     <input name="num-options" id="num-options" type="hidden" value="2">
