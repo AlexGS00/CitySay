@@ -1,3 +1,17 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fbfbfe;
+  background-image:
+    radial-gradient(circle, rgba(0, 0, 0, 0.04) 1.7px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, white 100%);
+  background-size: 20px 20px, 100% 100%;
+  background-repeat: repeat, no-repeat;
+  background-attachment: fixed;
+}
+
+
 a{
     color: black;
     text-decoration: none;
@@ -16,6 +30,13 @@ label{
     display: block;
 }
 
+.navbar {
+    /* background-color: #91b8d5; */
+    background-color: #fbfbfe;
+    /* border-bottom: 3px solid #baccd9; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Drop shadow */
+}
+
 .nav-link{
     color: rgb(10, 10, 160);
 }
@@ -25,11 +46,20 @@ label{
     margin: 10px 15vw;
 }
 
+.section-title{
+    font-weight: bold;
+    font-size: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0px 30px;
+    text-align: center;
+}
+
 .poll-card{
+    color: #040316;
     margin: 10px 25px;
     padding: 10px 20px;
-    background-color: rgb(216, 220, 255);
-    border: 3px solid navy;
+    background-color: #F1E8F4;
+    border: 3px solid #E2D1E5;
     border-radius: 10px;
 }
 
@@ -40,7 +70,10 @@ label{
 .poll-card-title{
     font-weight: bold;
     font-size: 30px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    text-decoration-color: #E2D1E5;
+    text-decoration-thickness: 5px;
 }
 
 .poll-card-inst{
@@ -61,4 +94,29 @@ label{
     background-color: rgb(216, 220, 255);
     border: 3px solid navy;
     border-radius: 10px;
+}
+
+.sesization-card{
+    color: black;
+    margin: 10px 25px;
+    padding: 10px 20px;
+    background-color: #a3bbdb;
+    border: 3px solid #6f94cd;
+    border-radius: 10px;
+}
+
+.sesization-heading{
+        margin: 10px 0px 15px;
+}
+
+.sesization-card-title{
+    font-weight: bold;
+    font-size: 30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.sesization-card-inst{
+    font-weight: 500;
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
