@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+import json
 from django.db import IntegrityError
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -163,7 +164,7 @@ def create_sesization(request):
         
         if not institution:
             return HttpResponse("Institution not found", status=404)
-        sesization = Sesization(title=title, description=description, institution=institution, creator=request.user)
+        sesization = Sesization(title=title, status="În așteptare" ,description=description, institution=institution, creator=request.user)
         sesization.save()
         
         return HttpResponseRedirect(reverse("index"))
@@ -179,6 +180,33 @@ def my_account(request):
         "user": user,
         "institution": institution
     })
+    
+def change_status(request, sesization_id):
+    
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to change the status of a sesization", status=403)
+
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)  # ✅ This reads the raw JSON
+            new_status = data["status"]
+        except (json.JSONDecodeError, KeyError):
+            return HttpResponse("Invalid JSON data", status=400)
+        
+        try:
+            sesization = Sesization.objects.get(id=sesization_id)
+        except Sesization.DoesNotExist:
+            return HttpResponse("Sesization not found", status=404)
+        
+        if sesization.institution != request.user.institution:
+            return HttpResponse("You do not have permission to change the status of this sesization", status=403)
+        
+        sesization.status = new_status
+        sesization.save()
+        
+        return JsonResponse({"message": "Status updated successfully"})  # ✅ Return JSON for frontend
+    else:
+        return HttpResponse("Invalid request method", status=405)
 
 def login_view(request):
     if request.method == "GET":
