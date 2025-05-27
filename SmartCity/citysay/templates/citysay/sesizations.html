@@ -1,0 +1,21 @@
+{% extends "citysay/layout.html" %}
+{% load static %}
+
+{% block title %}Sesizations{% endblock title %}
+
+{% block body %}
+<div class="">
+    <h2>Sesizations</h2>
+    <div class="sesizations-container d-flex flex-column">
+        {% for sesization in sesizations %}
+        <a href="/sesization/{{ sesization.id }}">
+        <div class="sesization-card">
+            <div class="sesization-heading">
+                <div class="sesization-card-title">{{ sesization.title }}</div>
+            </div>
+        </div>
+        <a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
