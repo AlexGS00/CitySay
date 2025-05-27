@@ -1,10 +1,4 @@
 
+
 SmartCity/db.sqlite3
-__pycache__/
-*.py[cod]
-*.sqlite3
-*.log
-*.pot
-*.pyc
-SmartCity/db.sqlite3
-SmartCity/citysay/__pycache__/views.cpython-312.pyc
+
