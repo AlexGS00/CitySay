@@ -26,21 +26,35 @@
                             <li class="nav-item">
                                 <a class="nav-link" href={% url "create_sesization" %}>Sesizations</a>
                             </li>
-                            {% if user.institution.name != "None" or not user.institution %}
+                            {% if user.institution.name != "None" or user.institution %}
                                 <li class="nav-item">
                                     <a class="nav-link" href={% url "create_poll" %}>Create Poll</a>
                                 </li>
                             {% endif %}
+                            {% if user.institution.name != "None" or user.institution %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url "sesizations" %}>Sesizari</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a href={% url "my_sesizations" %} class="nav-link">Sesizarile mele</a>
+                            </li>
                         {% endif %}
                     </ul>
                     </div>
                 </div>
                 <div class="d-flex flex-row">
                     {% if user.is_authenticated %}
-                    <div>Logged in as: {{user.first_name}} {{user.last_name}} </div>
+                    <a href="">
+                        <div>Yout account: {{user.first_name}} {{user.last_name}} </div>
+                    </a>
                     {% else %}
-                    <a href={% url "login" %}>Log In</a>
-                    <a href={% url "register" %}>Register</a>
+                    <button>
+                        <a href={% url "login" %}>Conectează-te</a>
+                    </button>
+                    <button>
+                        <a href={% url "register" %}>Înregistreazăte</a>
+                    </button>
                     {% endif %}
                 </div>
             </div>
