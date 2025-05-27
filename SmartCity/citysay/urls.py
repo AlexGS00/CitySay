@@ -13,5 +13,7 @@ urlpatterns = [
     path("create_poll", views.create_poll, name="create_poll"),
     path("create_sesization", views.create_sesization, name="create_sesization"),
     path("sesizations", views.sesizations, name="sesizations"),
+    path("my_sesizations", views.my_sesizations, name="my_sesizations"),
+    path("sesization/<int:sesization_id>", views.sesization, name="sesization"),
     
 ]
