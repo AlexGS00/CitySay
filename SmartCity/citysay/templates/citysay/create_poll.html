@@ -8,7 +8,7 @@
 <h2> Create a poll</h2>
 <form action="/create_poll" method="post">
     {% csrf_token %}
-    <input name="num_options" id="num-options" type="hidden" value="2">
+    <input name="num-options" id="num-options" type="hidden" value="2">
     <div class="mb-3">
         <label for="poll-title" class="form-label">Titlu Sondaj</label>
         <input type="text" class="form-control" id="poll-title" placeholder="Titlu sondaj" name="title" autocomplete="off">
@@ -31,7 +31,7 @@
             </div>
             <div class="option">
                 <label for="option-2" class="form-label">Optiunea 2:</label>
-                <input name="option-2" id="option-1" type="text" autocomplete="off" placeholder="Optiunea 2">
+                <input name="option-2" id="option-2" type="text" autocomplete="off" placeholder="Optiunea 2">
             </div>
         </div>
         <div class="d-flex flex-row justify-content-between">
