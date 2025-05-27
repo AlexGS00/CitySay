@@ -21,38 +21,30 @@
                         </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href={% url "polls" %} >Polls</a>
+                                <a class="nav-link" href={% url "polls" %} >Sondaje</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href={% url "create_sesization" %}>Sesizations</a>
+                                <a class="nav-link" href={% url "create_sesization" %}>Creaza sesizare</a>
                             </li>
                             {% if user.institution.name != "None" or user.institution %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href={% url "create_poll" %}>Create Poll</a>
+                                    <a class="nav-link" href={% url "sesizations" %}>Sesizarile Institutiei</a>
                                 </li>
                             {% endif %}
-                            {% if user.institution.name != "None" or user.institution %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href={% url "sesizations" %}>Sesizari</a>
-                                </li>
-                            {% endif %}
-                            <li class="nav-item">
-                                <a href={% url "my_sesizations" %} class="nav-link">Sesizarile mele</a>
-                            </li>
                         {% endif %}
                     </ul>
                     </div>
                 </div>
                 <div class="d-flex flex-row">
                     {% if user.is_authenticated %}
-                    <a href="">
+                    <a href={% url "my_account" %} class="nav-link">
                         <div>Yout account: {{user.first_name}} {{user.last_name}} </div>
                     </a>
                     {% else %}
-                    <button>
+                    <button class="custom-btn">
                         <a href={% url "login" %}>Conectează-te</a>
                     </button>
-                    <button>
+                    <button class="custom-btn">
                         <a href={% url "register" %}>Înregistreazăte</a>
                     </button>
                     {% endif %}

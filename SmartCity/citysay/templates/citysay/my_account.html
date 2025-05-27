@@ -1,0 +1,43 @@
+{% extends "citysay/layout.html" %}
+
+{% block title %}My Account{% endblock title %}
+
+{% block body %}
+    <div class="section-title">My Account</div>
+
+        <div class="section-container d-flex flex-row">
+            <div class="info-section account-section">
+                {% if message %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endif %}
+
+                <div class="mb-3">
+                    <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}
+                </div>
+                
+                <div class="mb-3">
+                    <strong>Email:</strong> {{ user.email }}
+                </div>
+
+                <div class="mb-3">
+                    <strong>CNP:</strong> {{ user.cnp }}
+                </div>
+                {% if user.institution and user.institution.name != "None" %}
+                    <div class="mb-3">
+                        <strong>Institution:</strong> {{ user.institution.name}}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="button-section account-section d-flex flex-column">
+                <button>
+                    <a href={% url "my_sesizations" %}>Sesizarile Mele</a>
+                </button>
+                {% if user.institution.name != "None" and user.institution %}
+                    <button>
+                        <a href={% url "create_poll" %}>Creaza sondaj</a>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}
