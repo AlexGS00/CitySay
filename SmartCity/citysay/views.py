@@ -111,9 +111,17 @@ def create_poll(request):
             option.save()
             
         return HttpResponseRedirect(reverse("polls"))
-            
-        
-        return HttpResponse("Not Iplemented")
+
+def sesizations(request):
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to view sesizations", status=403)
+    if request.user.institution.name == "None":
+        return HttpResponse("You must be associated with an institution to view sesizations", status=403)
+    
+    sesizations = Sesization.objects.filter(institution=request.user.institution).order_by("-id")
+    return render(request, "citysay/sesizations.html", {
+        "sesizations": sesizations
+    })
 
 def create_sesization(request):
     if request.method == "GET":
