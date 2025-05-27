@@ -30,7 +30,7 @@ def index(request):
     return render(request, "citysay/index.html")
 
 def polls(request):
-    all_polls = Poll.objects.all()
+    all_polls = Poll.objects.all().order_by("-id")
     return render(request, "citysay/polls.html",{
         "polls": all_polls
     })
@@ -93,6 +93,26 @@ def create_poll(request):
             "institution": institution
         })
     else:
+        num_options = int(request.POST["num-options"])
+        title = request.POST["title"]
+        description = request.POST["description"]
+        institution = request.user.institution
+        if not institution:
+            return HttpResponse("You must be logged in to create a poll", status=403)
+        if institution.name == "None":
+            return HttpResponse("You must be associated with an institution to create a poll", status=403)
+        
+        poll = Poll(title=title, description=description, institution=institution, creator=request.user)
+        poll.save()
+
+        for i in range(num_options):
+            option_title = request.POST[f"option-{i+1}"]
+            option = Option(title=option_title, poll=poll, number=i+1)
+            option.save()
+            
+        return HttpResponseRedirect(reverse("polls"))
+            
+        
         return HttpResponse("Not Iplemented")
 
 def create_sesization(request):
