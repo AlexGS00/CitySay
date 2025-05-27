@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h2>Trimiteti o sesizare</h2>
+<div class="section-title">Trimiteti o sesizare</div>
 
 <form action="{% url "create_sesization" %}" method="post">
     {% csrf_token %}

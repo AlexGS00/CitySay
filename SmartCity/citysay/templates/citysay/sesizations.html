@@ -5,14 +5,17 @@
 
 {% block body %}
 <div class="">
-    <h2>Sesizations</h2>
+    <div class="section-title">Sesizari</div>
     <div class="sesizations-container d-flex flex-column">
         {% for sesization in sesizations %}
         <a href="/sesization/{{ sesization.id }}">
-        <div class="sesization-card">
+        <div class="sesization-card d-flex dlex-row justify-content-between">
             <div class="sesization-heading">
                 <div class="sesization-card-title">{{ sesization.title }}</div>
                 <div class="sesization-card-institution">Catre: {{sesization.institution.name}}</div>
+            </div>
+            <div class="sesization-card-status">
+                Status: {{sesization.status}}
             </div>
         </div>
         <a>
