@@ -14,7 +14,6 @@ codes = {
     "LUCI": "Primaria Municipiului Deva",
     "ISJ": "Inspectoratul Scolar Judetean Hunedoara",
     "CJH": "Consiliul Judetean Hunedoara",
-    "NONE": "None"
 }
 
 institution_abreviations = {
@@ -122,6 +121,30 @@ def sesizations(request):
     return render(request, "citysay/sesizations.html", {
         "sesizations": sesizations
     })
+    
+def my_sesizations(request):
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to view your sesizations", status=403)
+    
+    sesizations = Sesization.objects.filter(creator=request.user).order_by("-id")
+    return render(request, "citysay/sesizations.html", {
+        "sesizations": sesizations
+    })
+    
+def sesization(request, sesization_id):
+    try:
+        selected_sesization = Sesization.objects.get(id=sesization_id)
+    except Sesization.DoesNotExist:
+        return HttpResponse("Sesization not found", status=404)
+    
+    if selected_sesization.institution == request.user.institution or selected_sesization:
+        return render(request, "citysay/sesization.html", {
+            "sesization": selected_sesization
+        })
+    
+    else:
+        return HttpResponse("You do not have permission to view this sesization", status=403)
+
 
 def create_sesization(request):
     if request.method == "GET":
@@ -144,6 +167,18 @@ def create_sesization(request):
         sesization.save()
         
         return HttpResponseRedirect(reverse("index"))
+    
+def my_account(request):
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to view your account", status=403)
+    
+    user = request.user
+    institution = user.institution if user.institution else "None"
+    
+    return render(request, "citysay/my_account.html", {
+        "user": user,
+        "institution": institution
+    })
 
 def login_view(request):
     if request.method == "GET":
@@ -178,10 +213,6 @@ def register(request):
         email = request.POST["email"]
         code = request.POST["code"]
 
-        # Default to NONE if invalid
-        if code not in codes:
-            code = "NONE"
-
         username = f'{first_name}-{last_name}'
 
         password = request.POST["password"]
@@ -202,6 +233,9 @@ def register(request):
             user.last_name = last_name
             user.cnp = cnp
             user.institution = institution
+                    # Default to NONE if invalid
+            if code not in codes:   
+                user.institution = Institution.objects.get(name="None")
             user.save()
         except IntegrityError:
             return render(request, "citysay/register.html", {
