@@ -1,11 +1,11 @@
 {% extends "citysay/layout.html" %}
 {% load static %}
 
-{% block title %}Polls{% endblock title %}
+{% block title %}Sondaje{% endblock title %}
 
 {% block body %}
 <div class="">
-    <h2>Polls</h2>
+    <div class="section-title">Sondaje</div>
     <div class="polls-container d-flex flex-column">
         {% for poll in polls %}
         <a href="/poll/{{ poll.id }}">
