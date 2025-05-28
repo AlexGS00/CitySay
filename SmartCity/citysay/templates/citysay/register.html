@@ -1,9 +1,11 @@
 {% extends "citysay/layout.html" %}
 
 {% block title %}Register{% endblock title %}
-
+{% load static %}
 {% block body %}
 <div class="section-title">Register</div>
+
+    <script src={% static "script/register.js" %}></script>
 
     {% if message %}
         <div>{{ message }}</div>
@@ -12,28 +14,32 @@
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
-            <input autofocus class="form-control" type="text" name="first-name" placeholder="First Name">
+            <input class="form-control" type="text" name="first-name" placeholder="First Name" required>
         </div>
         <div class="form-group">
-            <input autofocus class="form-control" type="text" name="last-name" placeholder="Last Name">
+            <input class="form-control" type="text" name="last-name" placeholder="Last Name" required>
         </div>
         <div class="form-group">
-            <input autofocus class="form-control" type="tel" name="cnp" placeholder="CNP" maxlength="13" autocomplete="off">
+            <input class="form-control" type="tel" name="cnp" placeholder="CNP" maxlength="13" autocomplete="off" required>
         </div>
         <div class="form-group">
-            <input autofocus class="form-control" type="email" name="email" placeholder="Email Adress" autocomplete="off">
+            <input class="form-control" type="email" name="email" placeholder="Email Adress" autocomplete="off" required>
         </div>
         <div class="form-group">
-            <input autofocus class="form-control" type="text" name="code" placeholder="Institution Code (OPTIONAL)">
+            <input class="form-control" type="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group"> 
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirmation" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
+            <input class="form-control" type="text" name="code" id="code" placeholder="Institution Code (OPTIONAL)" hidden>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirmation">
+        <div class="d-flex flex-row align-items-center mb-3">
+            <label for="check">Cod instituție:</label>
+            <input type="checkbox" id="check" name="check" value="">
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    <a href="{% url 'login' %}">Log In here.</a>
 {% endblock body %}
