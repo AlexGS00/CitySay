@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid d-flex flex-row justify-content-between">
                 <div class="d-flex flex-row">
+                    <img src="{% static 'images/logo.png' %}" width="50" height="50">
                     <a class="navbar-brand" href="#">CityVoice</a>
                     <div class="" id="navbarNav">
                     <ul class="navbar-nav">
@@ -48,7 +50,7 @@
                         <a style="color: #040316" href={% url "login" %}>Conectează-te</a>
                     </button>
                     <button class="custom-btn register">
-                        <a  style="color: whitesmoke" href={% url "register" %}>Înregistreazăte</a>
+                        <a  style="color: whitesmoke" href={% url "register" %}>Înregistrează-te</a>
                     </button>
                     {% endif %}
                 </div>
