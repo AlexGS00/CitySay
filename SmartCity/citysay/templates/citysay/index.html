@@ -3,12 +3,34 @@
 {% block title %}Home{% endblock title %}
 
 {% block body %}
-<div>Hello world</div>
-<div>Username: {{user.username}}</div>
-<div>First Name: {{user.first_name}} </div>
-<div>Last Name: {{user.last_name}} </div>
-<div>Institution: {{user.institution.name}} </div>
-<div>Logout: <a href={% url "logout" %} >Here</a> </div>
-<div>Register: <a href={% url "register" %}>Here</a></div>
-<div>Login: <a href={% url "login" %}>Here</a></div>
+{% if user.is_authentificated %}
+<div class="main container">
+    <div class="section-title text-center my-4">
+        CityVoice
+    </div>
+
+    <div class="content d-flex flex-column flex-lg-row gap-4" style="min-height: 60vh;">
+        <!-- Left: Polls (larger portion) -->
+        <div class="sesizations-list flex-grow-5" style="flex: 3;">
+            <div class="fw-bold mb-3">Cele mai noi sondaje:</div>
+            {% for poll in polls %}
+                <a href="/poll/{{ poll.id }}" class="text-decoration-none text-dark">
+                    <div class="poll-card mb-3 p-3 shadow-sm rounded bg-light">
+                        <div class="poll-heading mb-2">
+                            <div class="poll-card-title fw-semibold">{{ poll.title }}</div>
+                            <div class="poll-card-inst text-muted">By: {{ poll.institution.name }}</div>
+                        </div>
+                        <div class="poll-card-text">{{ poll.description }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <!-- Right: Button (smaller portion) -->
+        <div class="secodary-content d-flex justify-content-center align-items-center" style="flex: 1;">
+            <button class="btn btn-primary w-100 w-lg-auto">Sa vedem daca mere</button>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock body %}
