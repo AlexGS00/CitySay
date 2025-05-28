@@ -1,0 +1,12 @@
+{% for poll in polls %}
+        <a href="/poll/{{ poll.id }}">
+        <div class="poll-card">
+            <div class="poll-heading">
+                <div class="poll-card-title">{{ poll.title }}</div>
+                <div class="poll-card-inst">By: {{ poll.institution.name }}</div>
+            </div>
+            
+            <div class="poll-card-text">{{ poll.description }}</div>
+        </div>
+        <a>
+{% endfor %}
