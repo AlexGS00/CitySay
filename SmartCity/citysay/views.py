@@ -27,12 +27,34 @@ institution_abreviations = {
 
 # Create your views here.
 def index(request):
-    return render(request, "citysay/index.html")
+    polls_list = Poll.objects.all().order_by("-id")[:4]
+    return render(request, "citysay/index.html", {
+        "polls": polls_list
+    })
 
 def polls(request):
     all_polls = Poll.objects.all().order_by("-id")
+    institutions = Institution.objects.all()
     return render(request, "citysay/polls.html",{
-        "polls": all_polls
+        "polls": all_polls,
+        "institutions": institutions
+    })
+
+def institution_polls(request, institution_id):
+    if not request.user.is_authenticated:
+        return HttpResponse("You must be logged in to view institution polls", status=403)
+    
+    institution_id = int(institution_id)
+    
+    institution = request.user.institution
+    if institution_id != -1:
+        institution = Institution.objects.get(id=institution_id)
+        institution_polls = Poll.objects.filter(institution=institution).order_by("-id")
+    else:
+        institution_polls = Poll.objects.all().order_by("-id")
+    return render(request, "citysay/institution_polls.html", {
+        "polls": institution_polls,
+        "institution": institution
     })
 
 def poll(request, poll_id):
