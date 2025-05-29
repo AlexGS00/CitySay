@@ -1,5 +1,6 @@
-{% extends "citysay/layout.html" %}
 
+{% extends "citysay/layout.html" %}
+{% load static %}
 {% block title %}My Account{% endblock title %}
 
 {% block body %}
@@ -39,5 +40,8 @@
                     </button>
                 {% endif %}
             </div>
-        </div>
+            </div>
+        <div class="text-center">
+    <img src="{% static 'images/logo.png' %}", width="375" height="375">
+</div>
 {% endblock %}
