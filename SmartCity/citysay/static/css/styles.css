@@ -68,6 +68,8 @@ label{
 }
 
 .main{
+    padding-top: 20px;
+    padding-bottom: 40px;
      background-color: #e1e0f8;
     /* border: 3px solid #E2D1E5; */
     border-radius: 10px;
@@ -252,11 +254,6 @@ label{
         font-size: 26px;
     }
 
-    .sesization-description {
-        font-size: 16px;
-        padding: 15px;
-    }
-
     .status {
         font-size: 16px;
     }
@@ -378,7 +375,7 @@ label{
 .sesization-description {
     background-color: #e1e0f8;
     padding: 20px;
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
     border-radius: 12px;
     font-size: 17px;
@@ -388,6 +385,7 @@ label{
     max-width: 900px;
     white-space: pre-line;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
 }
 
 .status {
@@ -508,7 +506,7 @@ form + a:hover {
     width: 200px;
 }
 
-.account-button a{
+a .account-button{
     color: white;
     text-decoration: none;
 }
@@ -538,4 +536,156 @@ form + a:hover {
     .navbar-nav .nav-link {
         padding: 0.5rem 0;
     }
+}
+
+.num-votes{
+    font-size: 18px;
+    margin-left: 15px;
+    margin-top: 5px;
+    color: #040316;
+}
+
+.main-text{
+    font-size: 20px;
+    font-weight: 500;
+    color: #040316;
+    margin: 10px 10px;
+}
+
+.polls-header{
+    font-size: 24px;
+    font-weight: bold;
+    color: #040316;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.polls-header select{
+    font-size: 20px;
+    font-weight: bold;
+    color: #040316;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.change-status{
+    font-size: 18px;
+    font-weight: 500;
+    color: #040316;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.img-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.institution-card {
+    width: 300px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.institution-img {
+    width: 240px;
+    height: 240px;
+    max-width: 240px;
+    max-height: 240px;
+    object-fit: contain; /* ensures logos are not distorted */
+    margin-bottom: 10px;
+}
+
+.institution-name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Title and overall section spacing */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 2rem;
+}
+
+/* Paragraph and list styles */
+.home-description p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+}
+
+.home-description ul {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    padding-left: 1.2rem;
+    color: #333;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.home-description ul li {
+    margin-bottom: 0.7rem;
+}
+
+/* Mini header for institutions section */
+.mini-header {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #003366;
+    text-align: center;
+    margin: 2.5rem 0 1rem 0;
+}
+
+/* Institutions cards */
+.img-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.institution-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Buttons */
+.home-buttons {
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.home-button {
+    background-color: #003366;
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-right: 15px;
+    margin-top: 2rem;
+    margin-bottom: 4rem; /* Add spacing below the buttons */
+    flex-wrap: wrap;
+}
+
+.home-button:hover {
+    background-color: #00509e;
+    color: white;
 }
