@@ -15,6 +15,7 @@ codes = {
     "LUCI": "Primaria Municipiului Deva",
     "ISJ": "Inspectoratul Scolar Judetean Hunedoara",
     "CJH": "Consiliul Judetean Hunedoara",
+    "L'HOSPITAL": "Spitalul Județean de Urgență Deva",
 }
 
 institution_abreviations = {
@@ -22,7 +23,8 @@ institution_abreviations = {
     "POLICE": "Politia Municipiului Deva",
     "PRIM": "Primaria Municipiului Deva",
     "ISJ": "Inspectoratul Scolar Judetean Hunedoara",
-    "CJH": "Consiliul Judetean Hunedoara"
+    "CJH": "Consiliul Judetean Hunedoara",
+    "L'HOSPITAL": "Spitalul Județean de Urgență Deva",
 }
 
 # Create your views here.
