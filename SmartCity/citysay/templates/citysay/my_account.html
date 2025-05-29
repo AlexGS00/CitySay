@@ -30,13 +30,17 @@
             </div>
 
             <div class="button-section account-section d-flex flex-column align-items-center justify-content-center">
-                <button class="account-button mb-4">
-                    <a href={% url "my_sesizations" %}>Sesizarile Mele</a>
-                </button>
-                {% if user.institution.name != "None" and user.institution %}
-                    <button class="account-button">
-                        <a href={% url "create_poll" %}>Creaza sondaj</a>
+                <a href={% url "my_sesizations" %}>
+                    <button class="account-button mb-4">
+                        Sesizarile Mele
                     </button>
+                </a>
+                {% if user.institution.name != "None" and user.institution %}
+                <a href={% url "create_poll" %}>
+                        <button class="account-button">
+                            Creaza Sondaje
+                        </button>
+                    </a>
                 {% endif %}
             </div>
         </div>
