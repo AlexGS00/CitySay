@@ -78,12 +78,15 @@ def poll(request, poll_id):
             print(f"Option {option.number} has {option.vote_count} votes")
             if request.user in option.votes.all():
                 user_voted = True
+        # get the option ith the most votes
+        options = sorted(options, key=lambda x: x.vote_count, reverse=True)
                 
     return render(request, "citysay/poll.html",{
         "poll": selected_poll,
         "options": options,
         "user_voted": user_voted,
         "total_votes": total_votes, 
+        "winning_option": options[0] if options else None
     })
 
 def vote(request, poll_id, option_id):
