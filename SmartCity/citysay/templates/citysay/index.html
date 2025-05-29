@@ -3,15 +3,21 @@
 {% block title %}Home{% endblock title %}
 
 {% block body %}
-{% if user.is_authentificated %}
+{% if user.is_authenticated %}
 <div class="main container">
     <div class="section-title text-center my-4">
         CityVoice
     </div>
 
-    <div class="content d-flex flex-column flex-lg-row gap-4" style="min-height: 60vh;">
-        <!-- Left: Polls (larger portion) -->
-        <div class="sesizations-list flex-grow-5" style="flex: 3;">
+    <div class="content d-flex flex-column gap-4" style="min-height: 60vh;">
+        
+        <!-- Button above polls -->
+        <div class="d-flex justify-content-center">
+            <button class="">Creaza sesizare</button>
+        </div>
+
+        <!-- Polls Section -->
+        <div class="sesizations-list">
             <div class="fw-bold mb-3">Cele mai noi sondaje:</div>
             {% for poll in polls %}
                 <a href="/poll/{{ poll.id }}" class="text-decoration-none text-dark">
@@ -24,11 +30,6 @@
                     </div>
                 </a>
             {% endfor %}
-        </div>
-
-        <!-- Right: Button (smaller portion) -->
-        <div class="secodary-content d-flex justify-content-center align-items-center" style="flex: 1;">
-            <button class="btn btn-primary w-100 w-lg-auto">Sa vedem daca mere</button>
         </div>
     </div>
 </div>
