@@ -8,17 +8,18 @@
 <div class="">
     <div class="section-title">Sondaje</div>
     {% comment %} Add dropdown with th institution names so a person can chose which institution's polls they want to see {% endcomment %}
+    <div class="polls-header">
+        <label for="institution">Alegeti institutia dorita:</label>
 
-    <label for="institution">Alegeti institutia dorita:</label>
-
-    <select name="institution" id="institutions">
-        <option value="-1">Toate institutiile</option>
-        {% for institution in institutions %}
-            {% if institution.name != "None" %}
-                <option value="{{ institution.id }}">{{ institution.name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
+        <select name="institution" id="institutions">
+            <option value="-1">Toate institutiile</option>
+            {% for institution in institutions %}
+                {% if institution.name != "None" %}
+                    <option value="{{ institution.id }}">{{ institution.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
     <div class="polls-container d-flex flex-column" id="polls-container">
         {% for poll in polls %}
         <a href="/poll/{{ poll.id }}">
