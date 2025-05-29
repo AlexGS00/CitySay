@@ -689,3 +689,17 @@ a .account-button{
     background-color: #00509e;
     color: white;
 }
+
+.winning_option {
+    font-size: 20px;
+    font-weight: bold;
+    color: #040316;
+    text-align: center;
+    margin: 15px auto; 
+    padding: 10px 20px;
+    background-color: rgb(216, 220, 255);
+    border: 3px solid navy;
+    border-radius: 10px;
+    max-width: 700px;
+    min-width: 350px;
+}
