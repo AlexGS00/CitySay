@@ -3,6 +3,7 @@
 {% block title %}Sesizare: {{sesization.title}}{% endblock title %}
 {% load static %}
 {% block body %}
+<div class="sesization-block">
     <script src={% static "script/sesization.js" %}></script>
     <h2 class="sesization-title">{{ sesization.title }}</h2>
     
@@ -12,13 +13,16 @@
     </div>
     <div class="status">Status: {{sesization.status}}</div>
 
-    {% if sesization.status == "Luat la cunostiinta" %}
-        <input type="checkbox" id="status" name="status" value="" disabled checked>
-    {% else %}
-        <input type="checkbox" id="status" name="status" value="">
-    {% endif %}
+    <div class="change-status">
+        {% if sesization.status == "Luat la cunostiinta" %}
+            <input type="checkbox" id="status" name="status" value="" disabled checked>
+        {% else %}
+            <input type="checkbox" id="status" name="status" value="">
+        {% endif %}
 
-    <label for="status">Marcheaza ca si "Luat la cunostiinta"</label>
+        <label  for="status">Marcheaza ca si "Luat la cunostiinta"</label>
+    </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id="csrf-token">
     <input type="hidden" name="sesization_id" id="sesization_id" value="{{ sesization.id }}">
+</div>
 {% endblock body %}
