@@ -13,12 +13,12 @@
         
         <!-- Button above polls -->
         <div class="d-flex justify-content-center">
-            <button class="">Creaza sesizare</button>
+            <a href={% url "create_sesization" %}><button class="custom-btn register" style="font-size: 22px" >Creaza sesizare</button></a>
         </div>
 
         <!-- Polls Section -->
         <div class="sesizations-list">
-            <div class="fw-bold mb-3">Cele mai noi sondaje:</div>
+            <div class="fw-bold mb-3 main-text">Cele mai noi sondaje:</div>
             {% for poll in polls %}
                 <a href="/poll/{{ poll.id }}" class="text-decoration-none text-dark">
                     <div class="poll-card mb-3 p-3 shadow-sm rounded bg-light">
@@ -33,5 +33,59 @@
         </div>
     </div>
 </div>
+
+{% else %}
+
+<div class="container my-5">
+    <h1 class="mb-4 section-title">Bine ai venit la CityVoice!</h1>
+    <div class="home-description">
+        <p>
+            CityVoice este o aplicație modernă care îți oferă o legătură directă cu instituțiile publice din orașul tău. Creată pentru a reduce birocrația și pentru a încuraja implicarea 
+            civică, platforma îți permite să fii informat, să îți exprimi opinia și să contribui activ la deciziile care afectează comunitatea.
+        </p>
+        <ul>
+            <li>Votează în sondaje oficiale – Spune-ți părerea despre proiecte locale și priorități bugetare.</li>
+            <li>Trimite sesizări rapid – Semnalează probleme din oraș (ex: iluminat public, gropi, curățenie) direct către instituțiile responsabile.</li>
+            <li>Urmărește răspunsurile – Vezi statusul sesizărilor tale (în așteptare / luată la cunoștință) și activitatea autorităților.</li>
+            <li>Platformă centralizată – Totul într-un singur loc, fără dosare și fără drumuri inutile.</li>
+        </ul>
+
+        <div class="mini-header">Institutiile disponibile pe aplicatie:</div>
+        <div class="img-section d-flex flex-wrap justify-content-center gap-3">
+            <div class="institution-card">
+                <img src="{% static 'images/peda.png' %}" alt="Peda" class="institution-img">
+                <div class="institution-name">Colegiul National Pedagogic "Regina Maria" Deva</div>
+            </div>
+            <div class="institution-card">
+                <img src="{% static 'images/primarie.png' %}" alt="Primăria" class="institution-img">
+                <div class="institution-name">Primăria Municipiului Deva</div>
+            </div>
+            <div class="institution-card">
+                <img src="{% static 'images/consiliu.png' %}" alt="cjh" class="institution-img">
+                <div class="institution-name">Consiliul Judetean Hunedoara</div>
+            </div>
+        </div>
+        <div class="img-section d-flex flex-wrap justify-content-center gap-3 mb-4">
+            <div class="institution-card">
+                <img src="{% static 'images/spital.png' %}" alt="spital" class="institution-img">
+                <div class="institution-name">Spitalul Județean de Urgență Deva</div>
+            </div>
+            <div class="institution-card">
+                <img src="{% static 'images/isj.png' %}" alt="ish" class="institution-img">
+                <div class="institution-name">Inspectoratul Scolar Judetean Hunedoara</div>
+            </div>
+            <div class="institution-card">
+                <img src="{% static 'images/politia.jpg' %}" alt="politia" class="institution-img">
+                <div class="institution-name">Politia Municipiului Deva</div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center home-buttons">
+        <a href="{% url 'login' %}" class="home-button">Conectează-te</a>
+        <a href="{% url 'register' %}" class="home-button">Înregistrează-te</a>
+    </div>
+    <div></div>
+
+
 {% endif %}
 {% endblock body %}
