@@ -513,10 +513,29 @@ form + a:hover {
     text-decoration: none;
 }
 
-.sesizations-list{
-    width: 80%;
+/* Base link style */
+.navbar-nav .nav-link {
+    color: #040316;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
-.secondary-content{
-    width: 20%;
+/* Hover effect */
+.navbar-nav .nav-link:hover {
+    color: #ffcb05; /* Gold/yellow highlight */
+    text-decoration: none;
+}
+
+/* Active link style — use with logic like {% if request.path == ... %}active{% endif %} */
+.navbar-nav .nav-link.active {
+    color: black;
+    font-weight: 600;
+}
+
+/* Responsive stacking (optional for spacing) */
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0;
+    }
 }
