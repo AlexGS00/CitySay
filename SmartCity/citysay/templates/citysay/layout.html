@@ -18,10 +18,10 @@
                     <a class="navbar-brand" href="#">CityVoice</a>
                     <div class="" id="navbarNav">
                     <ul class="navbar-nav">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href={% url "index" %}>Home</a>
-                            </li>
+                        </li>
+                        {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href={% url "polls" %} >Sondaje</a>
                             </li>
@@ -43,7 +43,7 @@
                         <a style="color: whitesmoke" href={% url "logout" %}>Iesi din cont</a>
                     </button>
                     <a href={% url "my_account" %} class="nav-link">
-                        <div>Yout account: {{user.first_name}} {{user.last_name}} </div>
+                        <div>Contul tău : {{user.first_name}} {{user.last_name}} </div>
                     </a>
                     {% else %}
                     <button class="custom-btn log-in">
