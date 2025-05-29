@@ -265,6 +265,14 @@ label{
     label[for="status"] {
         font-size: 15px;
     }
+
+    .sau{
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #040316;
+    }
+
 }
 
 .poll {
@@ -421,7 +429,7 @@ form {
     background-color: #f5f4fc;
     padding: 40px;
     max-width: 600px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 20px auto;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
@@ -705,4 +713,11 @@ form + a:hover {
     border-radius: 10px;
     max-width: 700px;
     min-width: 350px;
+}
+
+.sau{
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: #040316;
 }
