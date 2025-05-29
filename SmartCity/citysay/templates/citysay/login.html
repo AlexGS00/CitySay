@@ -19,5 +19,10 @@
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-    <a href="{% url 'register' %}">Register here.</a>
+    
+    <div style="text-align: center;">
+    <button class ="custom-btn register center-button" style="background-color: #6c63ff; border: none; padding: 10px 15px;">
+        <a  style="color: whitesmoke" href={% url "register" %}>Înregistrează-te.</a>
+    </button>
+    </div>
 {% endblock %}
