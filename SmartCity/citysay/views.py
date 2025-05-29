@@ -29,7 +29,7 @@ institution_abreviations = {
 def index(request):
     polls_list = Poll.objects.all().order_by("-id")[:4]
     return render(request, "citysay/index.html", {
-        "polls": polls_list
+        "polls": polls_list,
     })
 
 def polls(request):
