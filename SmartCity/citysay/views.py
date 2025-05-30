@@ -279,7 +279,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "citysay/login.html", {
-                "message": "Invalid username and/or password"
+                "message": "CNP sau parolă incorectă"
             })
     
 def logout_view(request):
@@ -300,13 +300,13 @@ def register(request):
 
         if password != confirmation:
             return render(request, "citysay/register.html", {
-                "message": "Passwords must match."
+                "message": "Parolele trebuie să coincidă."
             })
 
         # Check if a user with this CNP already exists
         if User.objects.filter(cnp=cnp).exists():
             return render(request, "citysay/register.html", {
-                "message": "Deja exista un utilizator cu acest CNP."
+                "message": "Deja există un utilizator cu acest CNP."
             })
 
         # Find institution by code

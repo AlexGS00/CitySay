@@ -4,7 +4,7 @@
 {% block title %}My Account{% endblock title %}
 
 {% block body %}
-    <div class="section-title">My Account</div>
+    <div class="section-title">Contul Meu:</div>
 
         <div class="section-container d-flex flex-row">
             <div class="info-section account-section">
@@ -13,11 +13,11 @@
                 {% endif %}
 
                 <div class="mb-3">
-                    <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}
+                    <strong>Nume:</strong> {{ user.first_name }} {{ user.last_name }}
                 </div>
                 
                 <div class="mb-3">
-                    <strong>Email:</strong> {{ user.email }}
+                    <strong>E-mail:</strong> {{ user.email }}
                 </div>
 
                 <div class="mb-3">
@@ -25,7 +25,7 @@
                 </div>
                 {% if user.institution and user.institution.name != "None" %}
                     <div class="mb-3">
-                        <strong>Institution:</strong> {{ user.institution.name}}
+                        <strong>Instituție:</strong> {{ user.institution.name}}
                     </div>
                 {% endif %}
             </div>
@@ -33,13 +33,13 @@
             <div class="button-section account-section d-flex flex-column align-items-center justify-content-center">
                 <a href={% url "my_sesizations" %}>
                     <button class="account-button mb-4">
-                        Sesizarile Mele
+                        Sesizările Mele
                     </button>
                 </a>
                 {% if user.institution.name != "None" and user.institution %}
                 <a href={% url "create_poll" %}>
                         <button  class="account-button">
-                            Creaza Sondaje
+                            Creează Sondaje
                         </button>
                 </a>
                 {% endif %}

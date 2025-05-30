@@ -4,12 +4,12 @@
 
 {% block body %}
 
-<div class="section-title">Trimiteti o sesizare</div>
+<div class="section-title">Trimiteți o sesizare</div>
 
 <form action="{% url "create_sesization" %}" method="post">
     {% csrf_token %}
     <div class="mb-3">
-        <label for="sesization-title" class="form-label">Titlu Sesizare</label>
+        <label for="sesization-title" class="form-label">Titlul Sesizării</label>
         <input type="text" class="form-control" id="sesization-title" placeholder="Titlu sesizare" name="title" autocomplete="off" required>
     </div>
     <div class="mb-3">
@@ -22,9 +22,9 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="sesization-description" class="form-label">Descriere problema:</label>
+        <label for="sesization-description" class="form-label">Descrierea problemei:</label>
         <textarea class="form-control" rows="10" name="description" id="sesization-description" required></textarea>
     </div>
-    <button type="submit">Trimiteti sesizarea</button>
+    <button type="submit">Trimiteți sesizarea</button>
 </form>
 {% endblock body %}

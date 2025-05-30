@@ -3,10 +3,10 @@
 {% block title %}Login{% endblock title %}
 
 {% block body %}
-    <div class="section-title">Login</div>
+    <div class="section-title">Conectează-te</div>
 
     {% if message %}
-        <div>{{ message }}</div>
+        <div class="message">{{ message }}</div>
     {% endif %}
 
     <form action="{% url 'login' %}" method="post">
@@ -17,7 +17,7 @@
         <div class="form-group">
             <input class="form-control" type="password" name="password" placeholder="Password">
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Trimite</button>
     </form>
     
     <div class="text-center sau">

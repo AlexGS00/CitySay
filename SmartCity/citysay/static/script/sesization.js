@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const id = document.getElementById("sesization_id");
 
     sesization.addEventListener("click", function() { 
-        console.log("Sesizare trimisa");
+        console.log("Sesizare trimisă");
             const csrfToken = document.getElementById("csrf-token").value;
 
             fetch(`/change_status/${id.value}`, {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     "X-CSRFToken": csrfToken  // ✅ Add CSRF token
                 },
                 body: JSON.stringify({ 
-                    status: "Luat la cunostiinta"
+                    status: "Luat la cunoștiință"
                 })
             })
 
