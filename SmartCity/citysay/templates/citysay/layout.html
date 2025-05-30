@@ -28,7 +28,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href={% url "create_sesization" %}>Creaza sesizare</a>
                             </li>
-                            {% if user.institution.name != "None" or user.institution %}
+                            {% if user.institution.name != "None" and user.institution %}
                                 <li class="nav-item">
                                     <a class="nav-link" href={% url "sesizations" %}>Sesizarile Institutiei</a>
                                 </li>

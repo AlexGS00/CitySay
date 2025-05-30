@@ -10,11 +10,11 @@
     {% csrf_token %}
     <div class="mb-3">
         <label for="sesization-title" class="form-label">Titlu Sesizare</label>
-        <input type="text" class="form-control" id="sesization-title" placeholder="Titlu sesizare" name="title" autocomplete="off">
+        <input type="text" class="form-control" id="sesization-title" placeholder="Titlu sesizare" name="title" autocomplete="off" required>
     </div>
     <div class="mb-3">
         <label for="institution" class="form-label">Instituția vizată:</label>
-        <select class="form-select" name="institution" id="institution" required>
+        <select class="form-select" name="institution" id="institution" class="custom-dropdown" required>
             <option value="" disabled>Selectați o instituție</option>
             {% for abbr, name in institutions.items %}
             <option value="{{abbr}}">{{name}}</option>
@@ -23,7 +23,7 @@
     </div>
     <div class="mb-3">
         <label for="sesization-description" class="form-label">Descriere problema:</label>
-        <textarea class="form-control" rows="5" name="description" id="sesization-description"></textarea>
+        <textarea class="form-control" rows="10" name="description" id="sesization-description" required></textarea>
     </div>
     <button type="submit">Trimiteti sesizarea</button>
 </form>
