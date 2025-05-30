@@ -18,4 +18,5 @@ urlpatterns = [
     path("sesization/<int:sesization_id>", views.sesization, name="sesization"),
     path("my_account", views.my_account, name="my_account"),
     path("change_status/<int:sesization_id>", views.change_status, name="change_status"),
+    path("institutions", views.institutions, name="institutions"),
 ]
