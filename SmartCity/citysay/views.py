@@ -262,6 +262,9 @@ def change_status(request, sesization_id):
         return JsonResponse({"message": "Status updated successfully"})  # ✅ Return JSON for frontend
     else:
         return HttpResponse("Invalid request method", status=405)
+    
+def institutions(request):
+    return render(request, "citysay/institutions.html")
 
 def login_view(request):
     if request.method == "GET":
