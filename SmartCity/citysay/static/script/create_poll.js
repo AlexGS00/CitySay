@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         newOption.className = "option";
         newOption.innerHTML = `
         <label for="option-${newOptionNum}" class="form-label">Optiunea ${newOptionNum}:</label>
-        <input name="option-${newOptionNum}" id="option-${newOptionNum}" type="text" autocomplete="off" placeholder="Optiunea ${newOptionNum}"></input>
+        <input class="option-input" name="option-${newOptionNum}" id="option-${newOptionNum}" type="text" autocomplete="off" placeholder="Optiunea ${newOptionNum}" class="option-input"></input>
         `
         optionsSection.appendChild(newOption)
 
