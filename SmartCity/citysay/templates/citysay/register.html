@@ -8,38 +8,48 @@
     <script src={% static "script/register.js" %}></script>
 
     {% if message %}
-        <div>{{ message }}</div>
+        <div class="message">{{ message }}</div>
     {% endif %}
 
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
+
         <div class="form-group">
-            <input class="form-control" type="text" name="first-name" placeholder="First Name" required>
+            <input class="form-control" type="text" name="last-name" placeholder="Nume" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="last-name" placeholder="Last Name" required>
+            <input class="form-control" type="text" name="first-name" placeholder="Prenume" required>
         </div>
         <div class="form-group">
             <input class="form-control" type="tel" name="cnp" placeholder="CNP" maxlength="13" autocomplete="off" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email Adress" autocomplete="off" required>
+            <input class="form-control" type="email" name="email" placeholder="Adreasă E-mail" autocomplete="off" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password" required>
+            <input class="form-control" type="password" name="password" placeholder="Parola" required>
         </div>
         <div class="form-group"> 
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirmation" required>
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirmare Parola" required>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="code" id="code" placeholder="Institution Code (OPTIONAL)" hidden>
+            <input class="form-control" type="text" name="code" id="code" placeholder="Cod Instituție (OPTIONAL)" hidden autocomplete="off">
         </div>
         <div class="d-flex flex-row align-items-center mb-3">
             <label for="check">Cod instituție:</label>
             <input type="checkbox" id="check" name="check" value="">
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Trimite</button>
     </form>
 
-    <a href="{% url 'login' %}">Log In here.</a>
+        <div class="text-center sau">
+        
+        SAU
+    </div>
+
+    <div style="text-align: center;">
+        <button class ="custom-btn register center-button" style="background-color: #6c63ff; border: none; padding: 10px 15px;">
+            <a  style="color: whitesmoke" href={% url "login" %}>Conectează-te</a>
+        </button>
+    </div>
 {% endblock body %}

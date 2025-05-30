@@ -517,7 +517,7 @@ form + a:hover {
     width: 200px;
 }
 
-.account-button a{
+a .account-button {
     color: white;
     text-decoration: none;
 }
@@ -720,4 +720,141 @@ form + a:hover {
     margin-bottom: 40px;
     font-weight: bold;
     color: #040316;
+}
+
+/* Form container */
+form[action="/create_poll"] {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Option section header */
+.option-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #003366;
+}
+
+/* Individual option */
+.option {
+    margin-bottom: 1rem;
+    width: 400px;
+}
+
+.option-input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Buttons for adding/removing options */
+.create-poll-btn {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.create-poll-btn:hover {
+    background-color: #002244;
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive layout */
+@media (max-width: 576px) {
+    form[action="/create_poll"] {
+        padding: 1rem;
+    }
+
+    .d-flex.flex-row.justify-content-between {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .d-flex.flex-row {
+        flex-direction: column;
+    }
+
+    .create-poll-btn {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+    .option {
+        width: 100%;
+    }
+
+    .custom-dropdown {
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .polls-filter-label {
+        font-size: 0.95rem;
+    }
+}
+
+.polls-filter-label {
+    display: block;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    color: #003366;
+}
+
+/* Style the dropdown */
+.custom-dropdown {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    cursor: pointer;
+}
+
+.message{
+    color: #d10000;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }

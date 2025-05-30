@@ -9,7 +9,7 @@
     <h3 class="poll-title">{{ poll.title }}</h3>
     <div class="poll-institution">By: {{ poll.institution.name }}</div>
     <div class="poll-descrition"> 
-        {{ poll.description }}
+        {{ poll.description|linebreaksbr }}
     </div>
     {% if user.is_authenticated %}
         {% if not user_voted %}
