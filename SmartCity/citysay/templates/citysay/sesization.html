@@ -14,13 +14,13 @@
     <div class="status">Status: {{sesization.status}}</div>
 
     <div class="change-status">
-        {% if sesization.status == "Luat la cunoștiință" %}
+        {% if sesization.status == "Luat la cunoștință" %}
             <input type="checkbox" id="status" name="status" value="" disabled checked>
         {% else %}
             <input type="checkbox" id="status" name="status" value="">
         {% endif %}
 
-        <label  for="status">Marchează ca și "Luat la cunoștiință"</label>
+        <label  for="status">Marchează ca și "Luat la cunoștință"</label>
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" id="csrf-token">
     <input type="hidden" name="sesization_id" id="sesization_id" value="{{ sesization.id }}">

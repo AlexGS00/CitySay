@@ -89,14 +89,14 @@ def poll(request, poll_id):
             if request.user in option.votes.all():
                 user_voted = True
         # get the option ith the most votes
-        options = sorted(options, key=lambda x: x.vote_count, reverse=True)
+        winning_options = sorted(options, key=lambda x: x.vote_count, reverse=True)
                 
     return render(request, "citysay/poll.html",{
         "poll": selected_poll,
         "options": options,
         "user_voted": user_voted,
         "total_votes": total_votes, 
-        "winning_option": options[0] if options else None
+        "winning_option": winning_options[0] if options else None
     })
 
 @login_required(login_url='login')
@@ -301,6 +301,13 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
 
+        try :
+            cnp = str(int(cnp))
+        except ValueError:
+            return render(request, "citysay/register.html", {
+                "message": "CNP-ul trebuie să fie un număr valid."
+            })
+        
         if password != confirmation:
             return render(request, "citysay/register.html", {
                 "message": "Parolele trebuie să coincidă."

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     "X-CSRFToken": csrfToken  // ✅ Add CSRF token
                 },
                 body: JSON.stringify({ 
-                    status: "Luat la cunoștiință"
+                    status: "Luat la cunoștință"
                 })
             })
 
