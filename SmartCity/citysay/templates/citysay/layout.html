@@ -26,11 +26,11 @@
                                 <a class="nav-link" href={% url "polls" %} >Sondaje</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href={% url "create_sesization" %}>Creaza sesizare</a>
+                                <a class="nav-link" href={% url "create_sesization" %}>Creează sesizare</a>
                             </li>
                             {% if user.institution.name != "None" or user.institution %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href={% url "sesizations" %}>Sesizarile Institutiei</a>
+                                    <a class="nav-link" href={% url "sesizations" %}>Sesizările Instituției</a>
                                 </li>
                             {% endif %}
                         {% endif %}
@@ -40,7 +40,7 @@
                 <div class="d-flex flex-row">
                     {% if user.is_authenticated %}
                     <button class="custom-btn register">
-                        <a style="color: whitesmoke" href={% url "logout" %}>Iesi din cont</a>
+                        <a style="color: whitesmoke" href={% url "logout" %}>Ieși din cont</a>
                     </button>
                     <a href={% url "my_account" %} class="nav-link">
                         <div>Contul tău : {{user.first_name}} {{user.last_name}} </div>
