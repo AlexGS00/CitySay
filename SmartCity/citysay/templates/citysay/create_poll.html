@@ -5,7 +5,7 @@
 
 {% block body %}
 <script src={% static "script/create_poll.js" %}></script>
-<div class="section-title"> Create a poll</div>
+<div class="section-title"> Creează Sondaj</div>
 <form action="/create_poll" method="post">
     {% csrf_token %}
     <input name="num-options" id="num-options" type="hidden" value="2">
@@ -14,7 +14,7 @@
         <input type="text" class="form-control" id="poll-title" placeholder="Titlu sondaj" name="title" autocomplete="off">
     </div>
     <div class="mb-3">
-        <label for="poll-institution" class="form-label">Institutia dumneavoastra:</label>
+        <label for="poll-institution" class="form-label">Instituția dumneavoastră:</label>
         <input class="form-control" id="poll-institution" type="text" value='{{institution.name}}' disabled readonly>
     </div>
     <div class="mb-3">
@@ -23,23 +23,23 @@
     </div>
 
     <div class="option-section">
-        <h3>Optiuni:</h3>
+        <h3>Opțiuni:</h3>
         <div id="options">
             <div class="option">
-                <label for="option-1" class="form-label">Optiunea 1:</label>
+                <label for="option-1" class="form-label">Opțiunea 1:</label>
                 <input name="option-1" id="option-1" type="text" autocomplete="off" placeholder="Optiunea 1" class="option-input">
             </div>
             <div class="option">
-                <label for="option-2" class="form-label">Optiunea 2:</label>
+                <label for="option-2" class="form-label">Opțiunea 2:</label>
                 <input name="option-2" id="option-2" type="text" autocomplete="off" placeholder="Optiunea 2" class="option-input">
             </div>
         </div>
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row">
-                <button type="button" id="add-btn" class="create-poll-btn">Adauga Optiune</button>
-                <button type="button" id="rm-btn" class="create-poll-btn">Sterge Optiune</button>
+                <button type="button" id="add-btn" class="create-poll-btn">Adaugă Opțiune</button>
+                <button type="button" id="rm-btn" class="create-poll-btn">Șterge Opțiune</button>
             </div>
-            <button class="submit-btn">Adauga Sondaj</button>
+            <button class="submit-btn">Adaugă Sondaj</button>
         </div>
     </div>
 </form>
