@@ -33,7 +33,9 @@ if os.environ.get("RENDER"):
     ALLOWED_HOSTS.append("citysay.onrender.com")
 
 CSRF_TRUSTED_ORIGINS = [
-    ["citysay.onrender.com", "localhost", "127.0.0.1"]
+    "http://127.0.0.1",
+    "http://localhost",
+    "https://citysay.onrender.com",
 ]
 # Application definition
 
