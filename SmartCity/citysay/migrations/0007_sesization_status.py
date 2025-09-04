@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sesization',
             name='status',
-            field=models.CharField(default='în asteptare...', max_length=10),
+            field=models.CharField(default='în asteptare...', max_length=30),
             preserve_default=False,
         ),
     ]
